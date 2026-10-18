@@ -4,11 +4,12 @@
 <p>The former geometric mannequin demonstration has been removed. Every walk cycle below is rendered directly from the reference-matched atlas used by the Phaser scene. Each character has four isometric facings and eight distinct walk frames. Dedicated illustrated idle, talk and role-specific carry states remain incomplete and are labelled honestly.</p>
 <div class="card"><span class="badge">PRODUCTION WALK ART</span> <span class="badge warn">NON-WALK STATES PARTIAL</span><p>Canonical source: <code>assets/references/canonical_v4/civilian_characters.png</code>. Fixed footpoints and collision anchors remain independent from the illustration bounds.</p></div>
 <h2>Live four-direction cycles</h2><section class="grid" id="characters"></section>
+<h2>Timi V5 anatomy comparison</h2><div class="grid"><div class="card"><h3>Before · V4</h3><img class="reference" src="/assets/naija-delta-boys/characters/timi_walk_v1.png" alt="Timi walk atlas before V5 anatomy pass"></div><div class="card"><h3>After · V5</h3><img class="reference" src="/assets/naija-delta-boys/characters/timi_walk_v2.png" alt="Timi corrected walk atlas after V5 anatomy pass"></div></div>
 <h2>Canonical source reference</h2><div class="card"><img class="reference" src="/assets/naija-delta-boys/references/civilian_characters.png" alt="Canonical civilian character reference"></div>
 <script>
 const chars=[
  {name:'Player',src:'/assets/naija-delta-boys/characters/player_walk_pilot_v1.png',fw:192,fh:256,rows:[0,1,2,3],missing:'idle, talk, swim, boat and drown illustration'},
- {name:'Timi · Boatman',src:'/assets/naija-delta-boys/characters/timi_walk_v1.png',fw:192,fh:256,rows:[0,2,1,3],missing:'paddle walk, jetty idle, talk and board pose'},
+ {name:'Timi · Boatman · V5 anatomy pass',src:'/assets/naija-delta-boys/characters/timi_walk_v2.png',fw:192,fh:256,rows:[0,2,1,3],missing:'paddle walk, jetty idle, talk and board pose'},
  {name:'Tari · Fish seller',src:'/assets/naija-delta-boys/characters/tari_walk_v1.png',fw:222,fh:222,rows:[0,1,2,3],missing:'fish-basin carry, stall idle and receive gesture'},
  {name:'Chief Amakiri · Community representative',src:'/assets/naija-delta-boys/characters/representative_walk_v1.png',fw:192,fh:256,rows:[0,1,2,3],missing:'dignified idle, talk gesture and notebook variant'}
 ];

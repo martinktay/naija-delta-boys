@@ -10,6 +10,13 @@ describe('Otu Creek terrain',()=>{
  it('allows walking on a jetty over water',()=>expect(terrain.canWalk(300,700)).toBe(true));
  it('allows boats only on water',()=>{expect(terrain.canBoat(200,600)).toBe(true);expect(terrain.canBoat(900,600)).toBe(false)});
  it('recognises valid swim water and shore exit',()=>{expect(terrain.canSwim(200,600)).toBe(true);expect(terrain.canSwim(500,600)).toBe(false)});
+ it('connects every declared road and bridge waypoint to walkable terrain',()=>{
+  for(const road of map.roads)for(const [x,y] of road.points)expect(terrain.canWalk(x,y),`${road.id} ${x},${y}`).toBe(true);
+ });
+ it('connects spawn, market, kitchen, chief point, POS and south jetty through visible paths',()=>{
+  const destinations=[[map.player.spawnX,map.player.spawnY],[930,850],[1115,390],[1435,850],[1435,350],[475,715]];
+  for(const [x,y] of destinations)expect(['path','jetty']).toContain(terrain.at(x,y));
+ });
 });
 describe('authoritative player state',()=>{
  it('supports boarding, driving and disembarking',()=>{const s=new GameplayState();s.transition(PlayerMode.Boarding);s.transition(PlayerMode.BoatDriver);s.transition(PlayerMode.OnFoot);expect(s.mode).toBe(PlayerMode.OnFoot)});

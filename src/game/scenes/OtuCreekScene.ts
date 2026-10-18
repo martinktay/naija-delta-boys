@@ -21,7 +21,7 @@ export class OtuCreekScene extends Phaser.Scene{
  private stage:MissionStage='meet-timi'; private money=2500; private energy=100; private lives=3; private swim=map.player.swimSeconds;
  private lastDrain=0; private boundaryNotice=0; private checkpoint={x:map.respawn.x,y:map.respawn.y};
  constructor(){super('OtuCreekScene')}
- preload(){['mangrove_large','mangrove_small','jetty','palm','stilt_house','mama_ebi_kitchen','fish_market','community_hall','pos_shop','passenger_boat','billboard_frame','player','timi','tari','representative'].forEach(k=>this.load.image(k,`${A}sprites/${k}.png`));this.load.image('creekconnect-perspective',`${A}ads/creekconnect_perspective.png`);Object.values(characterAtlases).forEach(a=>this.load.spritesheet(a.texture,`${A}${a.path}`,{frameWidth:a.frameWidth,frameHeight:a.frameHeight}))}
+ preload(){['mangrove_large','mangrove_small','jetty','palm','stilt_house','mama_ebi_kitchen','fish_market','community_hall','pos_shop','passenger_boat','billboard_frame','player','timi','tari','representative'].forEach(k=>this.load.image(k,`${A}sprites/${k}.png`));this.load.image('creekconnect-perspective',`${A}ads/creekconnect_perspective.png`);this.load.image('road-crossing',`${A}terrain-v5/dirt-road-crossing.png`);this.load.image('road-straight',`${A}terrain-v5/dirt-road-straight.png`);this.load.image('wooden-bridge-v5',`${A}terrain-v5/wooden-bridge.png`);this.load.image('shoreline-v5',`${A}terrain-v5/shoreline-transition.png`);Object.values(characterAtlases).forEach(a=>this.load.spritesheet(a.texture,`${A}${a.path}`,{frameWidth:a.frameWidth,frameHeight:a.frameHeight}))}
  create(){
   this.physics.world.setBounds(0,0,map.world.width,map.world.height);this.cameras.main.setBounds(0,0,map.world.width,map.world.height).setZoom(.96);
   this.drawWorld();this.obstacles=this.physics.add.staticGroup();this.placeWorld();
@@ -38,9 +38,11 @@ export class OtuCreekScene extends Phaser.Scene{
   const g=this.add.graphics().setDepth(-10);g.fillStyle(0x087d96).fillRect(0,0,map.world.width,map.world.height);g.fillStyle(0x36adc0,.35).fillRect(350,0,110,map.world.height);
   g.fillStyle(0xd9b76f).beginPath().moveTo(460,0).lineTo(1900,0).lineTo(1900,1250).lineTo(460,1250).closePath().fillPath();
   g.fillStyle(0x75a85b,.6);for(let x=500;x<1850;x+=128)for(let y=50;y<1200;y+=64)if((x+y)%256===0)g.fillPoints([new Phaser.Math.Vector2(x,y+30),new Phaser.Math.Vector2(x+60,y),new Phaser.Math.Vector2(x+120,y+30),new Phaser.Math.Vector2(x+60,y+60)],true);
+  for(const road of map.roads){const width=Math.min(road.width,road.id==='main'?58:46);g.lineStyle(width+8,0x739250,.5).beginPath().moveTo(road.points[0][0],road.points[0][1]);for(const [x,y] of road.points.slice(1))g.lineTo(x,y);g.strokePath();g.lineStyle(width,0xc79a60,.92).beginPath().moveTo(road.points[0][0],road.points[0][1]);for(const [x,y] of road.points.slice(1))g.lineTo(x,y);g.strokePath();for(const [x,y] of road.points)g.fillStyle(0xc79a60,.92).fillCircle(x,y,width/2)}
   for(let i=0;i<10;i++)g.lineStyle(2,0x9eeaf0,.25).strokeEllipse(80+i*27,100+i*112,145,35);
  }
  private placeWorld(){
+  this.add.image(420,705,'wooden-bridge-v5').setScale(.62).setDepth(704);
   this.place('stilt_house',560,220,.7,170,66);this.place('mama_ebi_kitchen',1120,350,.76,215,78);this.place('fish_market',760,780,.72,220,70);this.place('community_hall',1480,710,.6,260,75);this.place('pos_shop',1450,310,.7,110,62);
   this.add.image(335,720,'jetty').setScale(.6).setDepth(720);this.add.image(335,335,'jetty').setScale(.6).setDepth(335);
   this.boat=this.physics.add.image(map.boat.spawnX,map.boat.spawnY,'passenger_boat').setScale(.54).setDepth(map.boat.spawnY).setImmovable(true);
@@ -48,8 +50,8 @@ export class OtuCreekScene extends Phaser.Scene{
   [[900,180],[1240,160],[1670,390],[1660,900]].forEach(([x,y])=>this.add.image(x,y,'palm').setScale(.52).setOrigin(.5,.94).setDepth(y));
   const f=this.add.image(1540,530,'billboard_frame').setScale(.9).setDepth(530);this.add.image(f.x,f.y,'creekconnect-perspective').setScale(.9).setDepth(531);
   this.addNpc('Timi','Boatman','timi',485,690,[[485,690],[430,715],[475,735]],characterAtlases.timi);
-  this.addNpc('Tari','Fish seller','tari',780,845,[[780,845],[900,870],[835,930]],characterAtlases.tari);
-  this.addNpc('Chief Amakiri','Community representative','representative',1450,800,[[1450,800],[1280,900],[1080,920]],characterAtlases.representative);
+  this.addNpc('Tari','Fish seller','tari',1030,800,[[930,650],[1030,800],[930,950],[780,950]],characterAtlases.tari);
+  this.addNpc('Chief Amakiri','Community representative','representative',1530,800,[[1435,650],[1530,800],[1435,950],[1100,950]],characterAtlases.representative);
  }
  private place(k:string,x:number,y:number,s:number,w:number,h:number){this.add.image(x,y,k).setScale(s).setOrigin(.5,.92).setDepth(y);const z=this.add.rectangle(x,y-h/2,w,h,0,0);this.physics.add.existing(z,true);this.obstacles.add(z)}
  private addNpc(name:string,role:string,k:string,x:number,y:number,waypoints:{x:number;y:number}[]|number[][],art:CharacterAtlasDefinition){const anchor=this.physics.add.image(x,y,k).setScale(.05).setAlpha(.001).setImmovable(true);const rig=new AtlasCharacterAnimator(this,art.texture,art.scale,art.phaseOffset,art.rows,art.footpoint).setPosition(x,y).setDepth(y);const label=this.add.text(x,y-112,name,{fontFamily:'Arial',fontSize:'18px',fontStyle:'bold',color:'#fff',backgroundColor:'#173b3ccc',padding:{x:8,y:4}}).setOrigin(.5).setDepth(y+1);const points=waypoints.map(p=>Array.isArray(p)?{x:p[0],y:p[1]}:p);this.npcs.push({name,role,anchor,rig,routine:new NpcRoutine(points,34+art.phaseOffset*2,art.phaseOffset,this.terrain),label})}

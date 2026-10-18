@@ -9,7 +9,7 @@ const pngSize=(path:string)=>{const data=readFileSync(path);return{width:data.re
 describe('canonical character asset bundle',()=>{
  it('registers all four active characters as production walk art',()=>{
   expect(manifest.characters.map(c=>c.id)).toEqual(['player','timi','tari','community_representative']);
-  expect(manifest.characters.every(c=>c.art_status==='production_walk')).toBe(true);
+  expect(manifest.characters.every(c=>c.art_status.startsWith('production_walk'))).toBe(true);
  });
  it('has every manifest texture and an exact 8 by 4 grid',()=>{
   for(const character of manifest.characters){

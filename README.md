@@ -14,7 +14,7 @@ Open the URL printed by Vite (normally `http://localhost:8080`). Move with WASD 
 
 Water gameplay uses one authoritative state machine. Walkers are blocked by deep water; board the passenger boat with E from a designated jetty, steer only over water, and disembark with E only at a dock. Press F (or **Enter Water** on touch) at a shoreline/jetty to swim. Swimming consumes a 12-second stamina meter; depletion causes a non-graphic fade, ₦250 recovery cost, and safe respawn without resetting mission progress.
 
-Evidence pages are available at `/asset-audit.html` and `/animation-evidence.html` while the development server is running. `/production-art-evidence.html` redirects to the canonical animation evidence. The current consolidation report is in `OTU_CREEK_MASTER_ART_ANIMATION_REPORT.md`; physical-device checks are in `ANDROID_CHROME_TEST_CHECKLIST.md`.
+Evidence pages are available at `/asset-audit.html` and `/animation-evidence.html` while the development server is running. `/production-art-evidence.html` redirects to the canonical animation evidence. The current V5 report is in `OTU_CREEK_V5_GAIT_ROADS_REPORT.md`; physical-device checks are in `ANDROID_CHROME_TEST_CHECKLIST.md`.
 
 ## First mission
 
@@ -36,3 +36,4 @@ Original sheets remain unchanged in `assets/raw_sheets/`. Run `tools/extract_ass
 - Swimming, drivable boats and autonomous NPC routines are implemented. Interiors, combat and multiplayer remain outside this vertical slice.
 - Some source-sheet colour fringes remain visible at high zoom and are flagged for manual paint correction.
 - Browser-emulated pointer controls are covered, but physical Android touchscreen testing remains unverified.
+- V5 adds connected Phaser-rendered roads and a walkable wooden bridge to the south jetty. Timi uses the V5 anatomy-pass atlas; the report records remaining gait-art limitations.
