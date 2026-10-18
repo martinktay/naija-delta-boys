@@ -1,0 +1,410 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "key": "mangrove_large",
+      "file": "sprites/mangrove_large.png",
+      "source": "assets/raw_sheets/tropical_delta_village_asset_atlas.png",
+      "crop": [
+        0,
+        0,
+        270,
+        235
+      ],
+      "dimensions": [
+        252,
+        227
+      ],
+      "scale": 0.62,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.88
+      },
+      "collision": {
+        "shape": "ellipse",
+        "rx": 54,
+        "ry": 22
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "mangrove_small",
+      "file": "sprites/mangrove_small.png",
+      "source": "assets/raw_sheets/tropical_delta_village_asset_atlas.png",
+      "crop": [
+        665,
+        45,
+        805,
+        215
+      ],
+      "dimensions": [
+        124,
+        131
+      ],
+      "scale": 0.62,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.88
+      },
+      "collision": {
+        "shape": "ellipse",
+        "rx": 34,
+        "ry": 15
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "jetty",
+      "file": "sprites/jetty.png",
+      "source": "assets/raw_sheets/tropical_delta_village_asset_atlas.png",
+      "crop": [
+        15,
+        640,
+        385,
+        825
+      ],
+      "dimensions": [
+        350,
+        185
+      ],
+      "scale": 0.6,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.78
+      },
+      "collision": {
+        "shape": "rect",
+        "w": 190,
+        "h": 58
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "palm",
+      "file": "sprites/palm.png",
+      "source": "assets/raw_sheets/tropical_coastal_game_asset_atlas.png",
+      "crop": [
+        0,
+        0,
+        158,
+        360
+      ],
+      "dimensions": [
+        146,
+        351
+      ],
+      "scale": 0.58,
+      "footpoint": {
+        "x": 0.48,
+        "y": 0.94
+      },
+      "collision": {
+        "shape": "ellipse",
+        "rx": 26,
+        "ry": 14
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "stilt_house",
+      "file": "sprites/stilt_house.png",
+      "source": "assets/raw_sheets/isometric_nigerian_village_asset_pack.png",
+      "crop": [
+        15,
+        15,
+        325,
+        345
+      ],
+      "dimensions": [
+        282,
+        267
+      ],
+      "scale": 0.7,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.88
+      },
+      "collision": {
+        "shape": "rect",
+        "w": 165,
+        "h": 76
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "mama_ebi_kitchen",
+      "file": "sprites/mama_ebi_kitchen.png",
+      "source": "assets/raw_sheets/isometric_nigerian_village_asset_pack.png",
+      "crop": [
+        390,
+        350,
+        715,
+        612
+      ],
+      "dimensions": [
+        325,
+        262
+      ],
+      "scale": 0.76,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.92
+      },
+      "collision": {
+        "shape": "rect",
+        "w": 210,
+        "h": 76
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "fish_market",
+      "file": "sprites/fish_market.png",
+      "source": "assets/raw_sheets/isometric_nigerian_village_asset_pack.png",
+      "crop": [
+        5,
+        350,
+        372,
+        605
+      ],
+      "dimensions": [
+        352,
+        238
+      ],
+      "scale": 0.72,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.92
+      },
+      "collision": {
+        "shape": "rect",
+        "w": 220,
+        "h": 72
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "community_hall",
+      "file": "sprites/community_hall.png",
+      "source": "assets/raw_sheets/isometric_nigerian_village_asset_pack.png",
+      "crop": [
+        410,
+        640,
+        888,
+        892
+      ],
+      "dimensions": [
+        478,
+        252
+      ],
+      "scale": 0.6,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.92
+      },
+      "collision": {
+        "shape": "rect",
+        "w": 240,
+        "h": 70
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "pos_shop",
+      "file": "sprites/pos_shop.png",
+      "source": "assets/raw_sheets/isometric_nigerian_village_asset_pack.png",
+      "crop": [
+        750,
+        370,
+        920,
+        585
+      ],
+      "dimensions": [
+        163,
+        193
+      ],
+      "scale": 0.7,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.94
+      },
+      "collision": {
+        "shape": "rect",
+        "w": 112,
+        "h": 62
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "passenger_boat",
+      "file": "sprites/passenger_boat.png",
+      "source": "assets/raw_sheets/nigerian_coastal_transport_asset_sheet.png",
+      "crop": [
+        15,
+        330,
+        610,
+        655
+      ],
+      "dimensions": [
+        577,
+        325
+      ],
+      "scale": 0.54,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.8
+      },
+      "collision": {
+        "shape": "rect",
+        "w": 250,
+        "h": 62
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "billboard_frame",
+      "file": "sprites/billboard_frame.png",
+      "source": "assets/raw_sheets/isometric_niger_delta_infrastructure_asset_sheet.png",
+      "crop": [
+        690,
+        570,
+        900,
+        845
+      ],
+      "dimensions": [
+        190,
+        260
+      ],
+      "scale": 0.7,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.94
+      },
+      "collision": {
+        "shape": "rect",
+        "w": 115,
+        "h": 24
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "player",
+      "file": "sprites/player.png",
+      "source": "assets/raw_sheets/nigerian_community_character_sprite_sheet.png",
+      "crop": [
+        0,
+        105,
+        185,
+        630
+      ],
+      "dimensions": [
+        178,
+        507
+      ],
+      "scale": 0.29,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.96
+      },
+      "collision": {
+        "shape": "ellipse",
+        "rx": 17,
+        "ry": 10
+      },
+      "review_status": "approved_prototype",
+      "review_notes": "Curated crop accepted for prototype gameplay."
+    },
+    {
+      "key": "timi",
+      "file": "sprites/timi.png",
+      "source": "assets/raw_sheets/nigerian_community_character_sprite_sheet.png",
+      "crop": [
+        360,
+        105,
+        525,
+        630
+      ],
+      "dimensions": [
+        165,
+        486
+      ],
+      "scale": 0.27,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.96
+      },
+      "collision": {
+        "shape": "ellipse",
+        "rx": 17,
+        "ry": 10
+      },
+      "review_status": "needs_manual_art",
+      "review_notes": "Static pose; dedicated directional animation required."
+    },
+    {
+      "key": "tari",
+      "file": "sprites/tari.png",
+      "source": "assets/raw_sheets/nigerian_community_character_sprite_sheet.png",
+      "crop": [
+        555,
+        100,
+        710,
+        630
+      ],
+      "dimensions": [
+        155,
+        470
+      ],
+      "scale": 0.27,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.96
+      },
+      "collision": {
+        "shape": "ellipse",
+        "rx": 17,
+        "ry": 10
+      },
+      "review_status": "needs_manual_art",
+      "review_notes": "Static pose; dedicated directional animation required."
+    },
+    {
+      "key": "representative",
+      "file": "sprites/representative.png",
+      "source": "assets/raw_sheets/nigerian_community_character_sprite_sheet.png",
+      "crop": [
+        735,
+        690,
+        900,
+        1240
+      ],
+      "dimensions": [
+        145,
+        476
+      ],
+      "scale": 0.26,
+      "footpoint": {
+        "x": 0.5,
+        "y": 0.96
+      },
+      "collision": {
+        "shape": "ellipse",
+        "rx": 17,
+        "ry": 10
+      },
+      "review_status": "needs_manual_art",
+      "review_notes": "Static pose; dedicated directional animation required."
+    }
+  ]
+}

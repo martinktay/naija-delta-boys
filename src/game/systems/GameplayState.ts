@@ -1,0 +1,3 @@
+export enum PlayerMode{OnFoot='OnFoot',Boarding='Boarding',BoatDriver='BoatDriver',Swimming='Swimming',Drowning='Drowning',Respawning='Respawning'}
+const allowed:Record<PlayerMode,PlayerMode[]>={[PlayerMode.OnFoot]:[PlayerMode.Boarding,PlayerMode.Swimming],[PlayerMode.Boarding]:[PlayerMode.BoatDriver],[PlayerMode.BoatDriver]:[PlayerMode.OnFoot,PlayerMode.Swimming],[PlayerMode.Swimming]:[PlayerMode.OnFoot,PlayerMode.Drowning],[PlayerMode.Drowning]:[PlayerMode.Respawning],[PlayerMode.Respawning]:[PlayerMode.OnFoot]};
+export class GameplayState{mode=PlayerMode.OnFoot;transition(next:PlayerMode){if(!allowed[this.mode].includes(next))throw new Error(`Invalid transition ${this.mode} -> ${next}`);this.mode=next}reset(){this.mode=PlayerMode.OnFoot}}

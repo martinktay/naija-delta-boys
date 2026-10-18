@@ -1,0 +1,113 @@
+{
+  "game": "Naija Delta Boys",
+  "game_slug": "naija-delta-boys",
+  "created": "2026-10-18",
+  "official_template": "https://github.com/phaserjs/template-react-ts",
+  "source_sheet_count": 10,
+  "reference_image_count": 2,
+  "asset_count": 12,
+  "notes": [
+    "Assets in assets/raw_sheets are unprocessed source illustrations, not Phaser-ready frames.",
+    "Use full-scene images in assets/references only for visual comparison; never render them as the game map.",
+    "Runtime assets must be extracted to public/assets/naija-delta-boys/sprites/.",
+    "Public demo sponsor texture is at public/assets/naija-delta-boys/ads/creekconnect_demo.png."
+  ],
+  "files": [
+    {
+      "file": "assets/raw_sheets/coastal_west_african_isometric_asset_pack.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "bb579ba84f4de7685c43670d452de0e9668b2dbb725eaa2d54483a360204d074"
+    },
+    {
+      "file": "assets/raw_sheets/isometric_niger_delta_infrastructure_asset_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "3e07b3346c283d24dea4156eafc5694870b8757ab27d447f9f56f76b062709cd"
+    },
+    {
+      "file": "assets/raw_sheets/isometric_nigerian_village_asset_pack.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "491a7498d666f217580d14dbdf44f22b13d90c23080a0da9884cdd6c935aaf1a"
+    },
+    {
+      "file": "assets/raw_sheets/lagos_coastal_town_game_asset_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "b370ddb7e7254e75fcacde46eb73d5fd2c3238f6d083f93b50d8f1743bfc5962"
+    },
+    {
+      "file": "assets/raw_sheets/naija_delta_character_asset_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "c9ef0d023f4b2d6ce12c05eac498827c613e454f5e779af520966370c4b3daf2"
+    },
+    {
+      "file": "assets/raw_sheets/nigerian_coastal_transport_asset_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "392d22547e3d96f86e1d8dc1c5ffe1311e965a4dcd4e3b2100aba41bbaf1cb29"
+    },
+    {
+      "file": "assets/raw_sheets/nigerian_community_character_sprite_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "74973bb73d2ce5fe5cd6e3768f1a44291ef4c96341739820636d525e9b1e4242"
+    },
+    {
+      "file": "assets/raw_sheets/tropical_coastal_game_asset_atlas.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "bb09afbdde110c1ba377a04959fe340a2af5e265cf3c58efe02998ce4985ee90"
+    },
+    {
+      "file": "assets/raw_sheets/tropical_delta_village_asset_atlas.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "d53dddcd37b5ae440c5e72faffd7cff984fadb7a785978398ed91a11ebdebcec"
+    },
+    {
+      "file": "assets/raw_sheets/tropical_mangrove_terrain_tileset.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet",
+      "sha256": "f5d00e7e29a24ae3a9a14b0b15c57410f118a53e8714a800455bb15cc56e2acd"
+    },
+    {
+      "file": "assets/references/a_colorful_isometric_cartoony_game_ui_scene_of_a_c.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "role": "reference_image",
+      "sha256": "316d5cbf032381bd0fc4df3d0fdcca3b7e953108a5699e0b4d03025da19cd84b"
+    },
+    {
+      "file": "assets/references/a_wide_detailed_isometric_2d_cartoon_vector_illus.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "role": "reference_image",
+      "sha256": "34033ca273d2f64a8ceba69bf0aea1a64fff8354485484505a786d2a07c27d2d"
+    }
+  ]
+}

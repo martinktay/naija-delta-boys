@@ -1,0 +1,91 @@
+{
+  "game": "Naija Delta",
+  "created": "2026-10-18",
+  "asset_count": 12,
+  "files": [
+    {
+      "file": "assets/raw_sheets/tropical_delta_village_asset_atlas.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/tropical_mangrove_terrain_tileset.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/isometric_nigerian_village_asset_pack.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/coastal_west_african_isometric_asset_pack.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/tropical_coastal_game_asset_atlas.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/isometric_niger_delta_infrastructure_asset_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/nigerian_coastal_transport_asset_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/nigerian_community_character_sprite_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/naija_delta_character_asset_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/raw_sheets/lagos_coastal_town_game_asset_sheet.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "source_sheet"
+    },
+    {
+      "file": "assets/references/a_colorful_isometric_cartoony_game_ui_scene_of_a_c.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "role": "reference_image"
+    },
+    {
+      "file": "assets/references/a_wide_detailed_isometric_2d_cartoon_vector_illus.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "role": "reference_image"
+    }
+  ]
+}
