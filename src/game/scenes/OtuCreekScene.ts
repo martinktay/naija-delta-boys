@@ -1,6 +1,8 @@
 import * as Phaser from 'phaser';
 import {EventBus} from '../EventBus';
-import map from '../data/otuCreekMap.json';
+import originalMap from '../data/otuCreekMap.json';
+import {reconstructionPreview,previewRoutines} from '../data/reconstructionPreview';
+import {drawReconstructionPreview} from './drawReconstructionPreview';
 import {TerrainSystem, type TerrainZone} from '../systems/TerrainSystem';
 import {GameplayState,PlayerMode} from '../systems/GameplayState';
 import type {Facing} from '../characters/CharacterAnimator';
@@ -12,11 +14,14 @@ import {continuousBoatVelocity} from '../systems/BoatRules';
 
 type Npc={name:string;role:string;anchor:Phaser.Physics.Arcade.Image;rig:AtlasCharacterAnimator;routine:NpcRoutine;label:Phaser.GameObjects.Text};
 const A='/assets/naija-delta-boys/';
+const preview=new URLSearchParams(window.location.search).get('world')==='reconstruction';
+const map=preview?reconstructionPreview:originalMap;
+const saveKey=preview?'ndb-reconstruction-preview':'ndb-mission';
 
 export class OtuCreekScene extends Phaser.Scene{
  private player!:Phaser.Physics.Arcade.Image; private playerRig!:AtlasCharacterAnimator; private boat!:Phaser.Physics.Arcade.Image;
  private cursors!:Phaser.Types.Input.Keyboard.CursorKeys; private wasd!:Record<string,Phaser.Input.Keyboard.Key>;
- private obstacles!:Phaser.Physics.Arcade.StaticGroup; private terrain=new TerrainSystem(map.terrain as TerrainZone[]);
+ private obstacles!:Phaser.Physics.Arcade.StaticGroup; private terrain=new TerrainSystem(map.terrain as TerrainZone[],preview?map.roads:[]);
  private state=new GameplayState(); private npcs:Npc[]=[]; private near:Npc|null=null; private talkingTo:Npc|null=null; private touch=''; private dialogue=false;
  private stage:MissionStage='meet-timi'; private money=2500; private energy=100; private lives=3; private swim=map.player.swimSeconds;
  private lastDrain=0; private boundaryNotice=0; private checkpoint={x:map.respawn.x,y:map.respawn.y};
@@ -31,10 +36,11 @@ export class OtuCreekScene extends Phaser.Scene{
   this.cursors=this.input.keyboard!.createCursorKeys();this.wasd=this.input.keyboard!.addKeys('W,A,S,D,E,F') as Record<string,Phaser.Input.Keyboard.Key>;
   this.input.keyboard!.on('keydown-E',()=>this.interact());this.input.keyboard!.on('keydown-F',()=>this.enterWater());
   EventBus.on('interact',this.interact,this);EventBus.on('enter-water',this.enterWater,this);EventBus.on('move-start',(d:string)=>this.touch=d);EventBus.on('move-stop',()=>this.touch='');EventBus.on('dialogue-choice',this.choice,this);
-  const saved=restoreMission(localStorage.getItem('ndb-mission'),{stage:this.stage,money:this.money});this.stage=saved.stage;this.money=saved.money;
+  const saved=restoreMission(localStorage.getItem(saveKey)??(preview?localStorage.getItem('ndb-mission'):null),{stage:this.stage,money:this.money});this.stage=saved.stage;this.money=saved.money;
   this.state.reset();this.emitHud();this.emitWater();EventBus.emit('current-scene-ready',this);
  }
  private drawWorld(){
+  if(preview){drawReconstructionPreview(this);return}
   const g=this.add.graphics().setDepth(-10);g.fillStyle(0x087d96).fillRect(0,0,map.world.width,map.world.height);g.fillStyle(0x36adc0,.35).fillRect(350,0,110,map.world.height);
   g.fillStyle(0xd9b76f).beginPath().moveTo(460,0).lineTo(1900,0).lineTo(1900,1250).lineTo(460,1250).closePath().fillPath();
   g.fillStyle(0x75a85b,.6);for(let x=500;x<1850;x+=128)for(let y=50;y<1200;y+=64)if((x+y)%256===0)g.fillPoints([new Phaser.Math.Vector2(x,y+30),new Phaser.Math.Vector2(x+60,y),new Phaser.Math.Vector2(x+120,y+30),new Phaser.Math.Vector2(x+60,y+60)],true);
@@ -49,9 +55,9 @@ export class OtuCreekScene extends Phaser.Scene{
   this.add.image(160,180,'mangrove_large').setScale(.62).setDepth(180);this.add.image(210,1060,'mangrove_small').setScale(.62).setDepth(1060);
   [[900,180],[1240,160],[1670,390],[1660,900]].forEach(([x,y])=>this.add.image(x,y,'palm').setScale(.52).setOrigin(.5,.94).setDepth(y));
   const f=this.add.image(1540,530,'billboard_frame').setScale(.9).setDepth(530);this.add.image(f.x,f.y,'creekconnect-perspective').setScale(.9).setDepth(531);
-  this.addNpc('Timi','Boatman','timi',485,690,[[485,690],[430,715],[475,735]],characterAtlases.timi);
-  this.addNpc('Tari','Fish seller','tari',1030,800,[[930,650],[1030,800],[930,950],[780,950]],characterAtlases.tari);
-  this.addNpc('Chief Amakiri','Community representative','representative',1530,800,[[1435,650],[1530,800],[1435,950],[1100,950]],characterAtlases.representative);
+  this.addNpc('Timi','Boatman','timi',485,preview?700:690,preview?previewRoutines.timi:[[485,690],[430,715],[475,735]],characterAtlases.timi);
+  this.addNpc('Tari','Fish seller','tari',preview?780:1030,preview?870:800,preview?previewRoutines.tari:[[930,650],[1030,800],[930,950],[780,950]],characterAtlases.tari);
+  this.addNpc('Chief Amakiri','Community representative','representative',preview?1480:1530,preview?820:800,preview?previewRoutines.chief:[[1435,650],[1530,800],[1435,950],[1100,950]],characterAtlases.representative);
  }
  private place(k:string,x:number,y:number,s:number,w:number,h:number){this.add.image(x,y,k).setScale(s).setOrigin(.5,.92).setDepth(y);const z=this.add.rectangle(x,y-h/2,w,h,0,0);this.physics.add.existing(z,true);this.obstacles.add(z)}
  private addNpc(name:string,role:string,k:string,x:number,y:number,waypoints:{x:number;y:number}[]|number[][],art:CharacterAtlasDefinition){const anchor=this.physics.add.image(x,y,k).setScale(.05).setAlpha(.001).setImmovable(true);const rig=new AtlasCharacterAnimator(this,art.texture,art.scale,art.phaseOffset,art.rows,art.footpoint).setPosition(x,y).setDepth(y);const label=this.add.text(x,y-112,name,{fontFamily:'Arial',fontSize:'18px',fontStyle:'bold',color:'#fff',backgroundColor:'#173b3ccc',padding:{x:8,y:4}}).setOrigin(.5).setDepth(y+1);const points=waypoints.map(p=>Array.isArray(p)?{x:p[0],y:p[1]}:p);this.npcs.push({name,role,anchor,rig,routine:new NpcRoutine(points,34+art.phaseOffset*2,art.phaseOffset,this.terrain),label})}
@@ -87,7 +93,7 @@ export class OtuCreekScene extends Phaser.Scene{
  private updatePrompt(){if(this.state.mode===PlayerMode.BoatDriver){const dock=this.nearestDock();EventBus.emit('interaction-prompt',dock.dist<=dock.d.radius?'Docked — press E to disembark':'Steer to a marked jetty to disembark');return}if(this.state.mode===PlayerMode.Swimming)return;const nearest=this.npcs.map(n=>({n,d:Phaser.Math.Distance.Between(this.player.x,this.player.y,n.anchor.x,n.anchor.y)})).sort((a,b)=>a.d-b.d)[0];this.near=nearest?.d<125?nearest.n:null;if(this.canBoard())EventBus.emit('interaction-prompt','Board Boat');else EventBus.emit('interaction-prompt',this.near?`Talk to ${this.near.name} — ${this.near.role}`:'Explore Otu Creek')}
  private open(n:Npc,text:string,c:[string,string][]){this.dialogue=true;this.talkingTo=n;n.routine.pauseForTalk();n.rig.setFacing(this.facing(this.player.x-n.anchor.x,this.player.y-n.anchor.y)).setState('talk');this.playerRig.setFacing(this.facing(n.anchor.x-this.player.x,n.anchor.y-this.player.y)).setState('talk');this.player.setVelocity(0);EventBus.emit('dialogue-open',{speaker:n.name,text,choices:c.map(([label,action])=>({label,action}))})}
  private choice(a:string){if(a==='explain'){EventBus.emit('dialogue-open',{speaker:'Timi',text:'A sealed market parcel—straight to Tari, then return to me.',choices:[{label:'I’ll do it',action:'accept'}]});return}const next=applyMissionChoice({stage:this.stage,money:this.money},a);this.stage=next.stage;this.money=next.money;this.talkingTo?.routine.resume();this.talkingTo=null;this.dialogue=false;EventBus.emit('dialogue-open',null);this.save();this.emitHud()}
- private save(){localStorage.setItem('ndb-mission',serializeMission({stage:this.stage,money:this.money}))}
+ private save(){localStorage.setItem(saveKey,serializeMission({stage:this.stage,money:this.money}))}
  private emitHud(){const objective={'meet-timi':'Find Timi at the jetty','deliver':'Deliver the parcel to Tari','return':'Return to Timi for payment','complete':'Delivery complete — explore Otu Creek'}[this.stage];EventBus.emit('hud-update',{money:this.money,energy:this.energy,location:'Otu Creek Waterfront',objective})}
  private emitWater(){EventBus.emit('water-state',{mode:this.state.mode,swim:Math.ceil(this.swim),swimMax:map.player.swimSeconds,lives:this.lives,showSwim:this.state.mode===PlayerMode.Swimming})}
 }
